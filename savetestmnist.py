@@ -11,7 +11,7 @@ import random
 
 batch_size = 128
 num_classes = 10
-epochs =  1
+epochs = 1
 save_model = True
 
 # input image dimensions
@@ -38,16 +38,18 @@ x_test /= 255
 x_train = np.ceil(x_train)
 x_test = np.ceil(x_test)
 
-def addnoise(data,prob):
-  print random.random()
-  for k in range(data.shape[0]):
-    for i in range(data.shape[1]):
-      for j in range(data.shape[2]):
-        if random.random() <= prob:
-          data[k][i][j] = 1 if data[k][i][j] == 0 else 0
+
+def addnoise(data, prob):
+    print(random.random())
+    for k in range(data.shape[0]):
+        for i in range(data.shape[1]):
+            for j in range(data.shape[2]):
+                if random.random() <= prob:
+                    data[k][i][j] = 1 if data[k][i][j] == 0 else 0
 
 
-addnoise(x_train,0.2)
-print x_train[0]
+addnoise(x_train, 0.2)
+print(x_train[0])
 import scipy.misc
-scipy.misc.imsave('outfile.jpg', x_train[0].reshape((28,28)))
+
+scipy.misc.imsave('outfile.jpg', x_train[0].reshape((28, 28)))
